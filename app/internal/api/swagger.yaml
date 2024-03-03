@@ -1,0 +1,47 @@
+openapi: 3.0.0
+servers:
+    - {}
+paths:
+    /api/v1/users:
+        post:
+            tags:
+                - Crud
+            summary: create
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/requestCrudCreate'
+            responses:
+                "200":
+                    description: Successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/responseCrudCreate'
+components:
+    schemas:
+        requestCrudCreate:
+            type: object
+            properties:
+                req: {}
+        requestCrudDelete:
+            type: object
+        requestCrudGetUser:
+            type: object
+        requestCrudGetUsers:
+            type: object
+        requestCrudUpdate:
+            type: object
+        responseCrudCreate:
+            type: object
+            properties:
+                resp: {}
+        responseCrudDelete:
+            type: object
+        responseCrudGetUser:
+            type: object
+        responseCrudGetUsers:
+            type: object
+        responseCrudUpdate:
+            type: object

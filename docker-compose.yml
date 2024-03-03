@@ -1,0 +1,31 @@
+services:
+  
+  mysql:
+    image: mysql
+    restart: always
+    container_name: svc-mysql
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=mysql
+      - MYSQL_PASSWORD=mysql
+      - MYSQL_DATABASE=Store
+    volumes:
+      - ./data:/var/lib/mysql/
+    networks:
+      - appnet
+
+  app:
+    build: .
+    restart: always
+    container_name: svc-app
+    ports: 
+      - 2777:80
+    depends_on:
+      - mysql
+    networks:
+      - appnet
+
+networks:
+  appnet:
